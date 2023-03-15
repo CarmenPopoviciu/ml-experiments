@@ -1,0 +1,47 @@
+@import "color-palette";
+
+html, body {
+  height: 100%;
+  margin: 0px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  color: #b4aaaa
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #082127;
+
+  .content {
+    display: block;
+
+    .message-input {
+      left: 0;
+      position: absolute;
+      width: 100%;
+      bottom: 5%;
+      text-align: center;
+      z-index: 1;
+
+      #message {
+        width: 90%;
+        height: 20px;
+        padding: 10px;
+        border: none;
+        outline: none;
+        background-color: #000011;
+        color: #b4aaaa;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 20px;
+        font-weight: 100;
+        text-align: center;
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+  }
+}
