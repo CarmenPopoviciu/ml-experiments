@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "description": "",
   "scripts": {
-    "dev": "nodemon --watch client/src --ext \"html,scss,js,mjs,ts,json\" -x \"yarn build:client-app && npx wrangler pages dev public --local --live-reload\"",
+    "dev:do": "npx wrangler dev durableObjects/globe.ts --local --port 8400",
+    "dev:fns": "npx wrangler pages dev public --do=GLOBE_DO=GlobeDO@a",
+    "dev": "nodemon --watch client/src --ext \"html,scss,js,mjs,ts,json\" -x \"yarn build:client-app && npx wrangler pages dev public --local --live-reload --do=GLOBE_DO=GlobeDO@a\"",
     "build:client-app": "rm -rf public && parcel build client/src/index.html --dist-dir public",
     "lint": "eslint .",
     "publish:to-pages": "yarn build:client-app && npx wrangler pages publish public"
@@ -17,6 +19,7 @@
     "globe.gl": "^2.27.1"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "4.20230307.0",
     "@parcel/transformer-sass": "2.8.3",
     "buffer": "6.0.3",
     "eslint": "8.36.0",
@@ -24,6 +27,6 @@
     "process": "0.11.10",
     "nodemon": "^2.0.21",
     "typescript": "^4.9.5",
-    "wrangler": "^2.12.3"
+    "wrangler": "https://prerelease-registry.devprod.cloudflare.dev/workers-sdk/runs/4610496025/npm-package-wrangler-2989"
   }
 }
