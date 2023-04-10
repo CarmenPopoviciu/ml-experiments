@@ -28,7 +28,7 @@ export function initialiseGlobe(containerElement: HTMLElement): GlobeInstance {
     .arcsTransitionDuration(Arc.transitionDuration)
 
     /** rings layer */
-    .ringColor(() => colorInterpolator)
+    .ringColor('color')
     .ringMaxRadius(Ring.maxRadius)
     .ringResolution(Ring.resolution)
     .ringRepeatPeriod(Ring.repeatPeriod);
