@@ -3,9 +3,10 @@
   "version": "0.0.1",
   "description": "",
   "scripts": {
-    "dev:do": "npx wrangler dev durableObjects/globe.ts --local --port 8400",
-    "dev:fns": "npx wrangler pages dev public --do=GLOBE_DO=GlobeDO@a",
-    "dev": "nodemon --watch client/src --ext \"html,scss,js,mjs,ts,json\" -x \"yarn build:client-app && npx wrangler pages dev public --local --live-reload --do=GLOBE_DO=GlobeDO@a\"",
+    "dev:do": "npx wrangler dev durableObjects/globe/globeDO.ts --local --port 8400",
+    "dev:model-do": "npx wrangler dev durableObjects/model/modelDO.ts --local --port 8401",
+    "dev:fns": "npx wrangler pages dev public --do GLOBE_DO=GlobeDO@a MODEL_DO=ModelDO@b",
+    "dev": "nodemon --watch client/src --ext \"html,scss,js,mjs,ts,json\" -x \"npm run build:client-app && npx wrangler pages dev public --local --live-reload --do GLOBE_DO=GlobeDO@a",
     "build:client-app": "rm -rf public && parcel build client/src/index.html --dist-dir public",
     "lint": "eslint .",
     "publish:to-pages": "yarn build:client-app && npx wrangler pages publish public"

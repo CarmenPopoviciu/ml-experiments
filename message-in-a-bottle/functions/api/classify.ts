@@ -1,9 +1,23 @@
 import { classify, getLabels } from '../../server/model/tf-toxicity-model';
 
+// interface Env {
+//   MODEL_DO: DurableObjectNamespace;
+// }
+
 export async function onRequestPost(context) {
   const { request } = context;
+  // const { pathname } = new URL(context.request.url);
+  // const id = context.env.MODEL_DO.idFromName(pathname);
+  // const stub = context.env.MODEL_DO.get(id);
+
   const { text } = await request.json();
   const labels = getLabels();
+  
+  // return stub.fetch(context.request, {
+  //   method: 'POST',
+  //   body: JSON.stringify({ text }),
+  //   headers: { 'Content-type': 'application/json' }
+  // });
 
   /**
    * Since Workers don't support `performance.now()` this seems to be
@@ -17,7 +31,7 @@ export async function onRequestPost(context) {
   console.time('🕒 Classification elapsed time');
   const results = await classify([text]);
   console.timeEnd('🕒 Classification elapsed time');
-  /** */
+  // /** */
 
   return new Response(
     JSON.stringify({ labels, results }),

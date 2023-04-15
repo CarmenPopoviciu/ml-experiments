@@ -1,0 +1,12 @@
+name = "b"
+
+compatibility_date = "2023-04-15"
+
+[durable_objects]
+bindings = [
+	{ name = "MY_MODEL_DO", class_name = "ModelDO" }
+]
+
+[[migrations]]
+tag = "v1" # Should be unique for each entry
+new_classes = ["ModelDO"]
