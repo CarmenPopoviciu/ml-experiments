@@ -17,7 +17,6 @@ export async function onRequestPost(context) {
   console.time('🕒 Classification elapsed time');
   const results = await classify([text]);
   console.timeEnd('🕒 Classification elapsed time');
-  /** */
 
   return new Response(
     JSON.stringify({ labels, results }),

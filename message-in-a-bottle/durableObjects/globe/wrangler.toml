@@ -1,0 +1,12 @@
+name = "a"
+
+compatibility_date = "2023-04-15"
+
+[durable_objects]
+bindings = [
+	{ name = "MY_DO", class_name = "GlobeDO" }
+]
+
+[[migrations]]
+tag = "v1" # Should be unique for each entry
+new_classes = ["GlobeDO"]

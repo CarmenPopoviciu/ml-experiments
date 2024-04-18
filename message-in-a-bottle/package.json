@@ -3,27 +3,31 @@
   "version": "0.0.1",
   "description": "",
   "scripts": {
-    "dev": "nodemon --watch client/src --ext \"html,scss,js,mjs,ts,json\" -x \"yarn build:client-app && npx wrangler pages dev public --local --live-reload\"",
-    "build:client-app": "rm -rf public && parcel build client/src/index.html --dist-dir public",
+    "dev:do": "npx wrangler dev durableObjects/globe/globeDO.ts --port 8400",
+    "dev:model-do": "npx wrangler dev durableObjects/model/modelDO.ts --port 8401",
+    "dev:fns": "npx wrangler pages dev public --do GLOBE_DO=GlobeDO@a MODEL_DO=ModelDO@b",
+    "dev": "nodemon --watch client/src --ext \"html,scss,js,mjs,ts,json\" -x \"npm run build:client-app && npx wrangler pages dev public --live-reload --do GLOBE_DO=GlobeDO@a\"",
+    "build:client-app": "rm -rf public && npx parcel build client/src/index.html --dist-dir ./public",
     "lint": "eslint .",
     "publish:to-pages": "yarn build:client-app && npx wrangler pages publish public"
   },
   "dependencies": {
-    "@tensorflow-models/toxicity": "^1.2.2",
-    "@tensorflow/tfjs-core": "^4.2.0",
-    "@tensorflow/tfjs-backend-wasm": "^4.2.0",
-    "@tensorflow/tfjs-backend-cpu": "^4.2.0",
-    "@tensorflow/tfjs-converter": "^4.2.0",
-    "globe.gl": "^2.27.1"
+    "@tensorflow-models/toxicity": "1.2.2",
+    "@tensorflow/tfjs-core": "4.17.0",
+    "@tensorflow/tfjs-backend-wasm": "4.17.0",
+    "@tensorflow/tfjs-backend-cpu": "4.17.0",
+    "@tensorflow/tfjs-converter": "4.17.0",
+    "globe.gl": "2.32.1"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "4.20240405.0",
     "@parcel/transformer-sass": "2.8.3",
     "buffer": "6.0.3",
-    "eslint": "8.36.0",
+    "eslint": "9.0.0",
     "parcel": "2.8.3",
     "process": "0.11.10",
-    "nodemon": "^2.0.21",
-    "typescript": "^4.9.5",
-    "wrangler": "^2.12.3"
+    "nodemon": "3.1.0",
+    "typescript": "5.4.5",
+    "wrangler": "3.51.0"
   }
 }

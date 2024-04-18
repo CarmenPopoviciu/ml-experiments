@@ -28,7 +28,7 @@ export async function loadModel() {
   console.log("⏳ Loading model...");
 
   try{
-    tfjsModel = await toxicity.load();
+    tfjsModel = await toxicity.load(0.9, []);
   } catch(err) {
     throw err;
   }
